@@ -1,5 +1,73 @@
 import json
 from datasets.arrow_dataset import Dataset
+import pandas as pd
+from PIL import Image
+import os
+
+def load_json(destination_path):
+    with open(destination_path, 'r') as file:
+        json_data = json.load(file)
+    meta_data = map_json_types(json_data)
+    data_sample = map_json_examples(json_data)
+    json_data = str(data_sample)+'\n```\nMeta Data:\n```\n'+str(meta_data)+'\n```\n'
+    return json_data
+
+def file_loader(destination_path):
+    extension = os.path.splitext(destination_path)[1].lower()
+
+    if extension in ['.jpg', '.jpeg', '.png', '.gif']:
+        return load_image(destination_path)
+    elif extension == '.csv':
+        return load_csv(destination_path)
+    elif extension == '.tsv':
+        return load_tsv(destination_path)
+    elif extension == '.json':
+        return load_json(destination_path)
+    elif extension in ['.txt', '.md']:
+        return load_text(destination_path)
+    elif extension == '.parquet':
+        return load_parquet(destination_path)
+    elif extension == '.xlsx':
+        return load_excel(destination_path)
+    else:
+        return "Cannot Read Yet"
+
+def load_image(destination_path):
+    try:
+        img = Image.open(destination_path)
+        return "Image Format Correct"
+    except:
+        return "Not an Image"
+
+def load_csv(destination_path):
+    data = pd.read_csv(destination_path)
+    # Limit to 5 rows
+    data = data.head(5)
+    return data.to_dict()
+
+def load_tsv(destination_path):
+    data = pd.read_csv(destination_path, sep='\t')
+    # Limit to 5 rows
+    data = data.head(5)
+    return data.to_dict()
+
+def load_text(destination_path):
+    with open(destination_path, 'r') as file:
+        # Limit to the first 500 characters
+        data = file.read(500)
+    return data
+
+def load_parquet(destination_path):
+    data = pd.read_parquet(destination_path)
+    # Limit to 5 rows
+    data = data.head(5)
+    return data.to_dict()
+
+def load_excel(destination_path):
+    data = pd.read_excel(destination_path)
+    # Limit to 5 rows
+    data = data.head(5)
+    return data.to_dict()
 
 def map_json_types(json_input, threshold=10):
     if isinstance(json_input, dict):
