@@ -1,18 +1,58 @@
-import pyarrow as pa
+import json
+from datasets.arrow_dataset import Dataset
 
-# Specify the path to the .arrow file
-file_path = 'path/to/your/file.arrow'
+def map_json_types(json_input, threshold=10):
+    if isinstance(json_input, dict):
+        result = {}
+        if len(list(json_input.keys()))<threshold:
+            for key, value in json_input.items():
+                result[key] = map_json_types(value)
+            return result
+        else:
+            return "<Dict\{with lots of keys and items>\}"
+    elif isinstance(json_input, list):
+        if len(json_input) > 0:
+            first_element = json_input[0]
+            if isinstance(first_element, list) or isinstance(first_element, dict):
+                return f"<List[{map_json_types(first_element)}]>"
+            else:
+                return f"<List[{type(first_element).__name__}]>"
+        else:
+            return json_input
+    elif isinstance(json_input, Dataset):
+        return '<```\n'+json_input.__repr__()+'\n```\n>'
+    else:
+        return type(json_input).__name__
 
-# Specify the number of bytes to read (10KB in this example)
-bytes_to_read = 1024 * 10
+def map_json_examples(json_input, threshold=10):
+    if isinstance(json_input, dict):
+        result = {}
+        if len(list(json_input.keys()))<threshold:
+            for key, value in json_input.items():
+                result[key] = map_json_examples(value)
+            return result
+        else:
+            return "<Dict\{with lots of keys and items>\}"
+    elif isinstance(json_input, list):
+        if len(json_input) > 0:
+            first_element = json_input[0]
+            if isinstance(first_element, list) or isinstance(first_element, dict):
+                return f"<List[{map_json_examples(first_element)}]>"
+            else:
+                return f"<List[{str([str(v)[:100] for v in json_input[:3]])}]>"
+        else:
+            return json_input
+    elif isinstance(json_input, Dataset):
+        json_input = json_input.to_dict()
+        return map_json_examples(json_input)
+    else:
+        return str(json_input)[:100]
 
-# Open the .arrow file for reading
-with pa.OSFile(file_path, 'rb') as f:
-    # Specify the read options to read only the desired number of bytes
-    read_options = pa.ipc.ReadOptions(bytes_to_read=bytes_to_read)
-
-    # Read the .arrow file as a Table
-    table = pa.ipc.open_file(f, read_options=read_options).read_all()
-
-# Access the data from the table or convert it to a Pandas DataFrame
-# ...
+# if __name__ == '__main__':
+#     parsed_json = {"data": {"train": [["aa", "bb"], ["aa", "bb"]], "test": 0, "val": {"a": 100, "b": "c", "d": [1], "e": 4}}}
+#     result = map_json_types(parsed_json)
+#     output = json.dumps(result, indent=4)
+#     print(output)
+#     result = map_json_examples(parsed_json)
+#     output = json.dumps(result, indent=4)
+#     print(output)
