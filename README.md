@@ -1,6 +1,6 @@
-# ProTaska-GPT
+# 🚀 ProTaska-GPT
 
-**Your AI-powered data companion.**
+**Your AI-powered data companion 🤖**
 Specify your dataset of choice, and ProTaska-GPT generates a tailored codebase, empowering you to visualize and understand the dataset with tasks, tutorials, and actionable insights. Accelerate your data science journey with ease and efficiency!
 
 ## Key Features:
@@ -10,3 +10,7 @@ Specify your dataset of choice, and ProTaska-GPT generates a tailored codebase, 
 3. **Task Recommendations:** Leveraging its GPT-backbone, it generates a customized set of tasks tailored to each dataset, providing users with valuable project ideas and challenges.
 4. **Algorithm Suggestions:** Based on the dataset characteristics, it suggests suitable machine learning algorithms, enabling users to make informed decisions during their project journey.
 5. **Beginner-Friendly Tutorials**: ProTaska-GPT offers to generate a collection of beginner-friendly tutorials that guide users through common data science workflows, step-by-step, fostering practical learning and skill development.
+
+## 💁 Contributing
+
+This is an open-source project and we would be really grateful to any contributions.
