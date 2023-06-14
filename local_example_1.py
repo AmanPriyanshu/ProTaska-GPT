@@ -8,11 +8,6 @@ with open(".secrets", "r") as f:
 
 if __name__ == '__main__':
 	data_ingestor = LocalDatasetImporter()
-	directory = data_ingestor.walk_dataset('./downloaded_data/')
-	print(directory)
-	meta_data = map_json_types(data_ingestor.huggingface_dataset)
-	data_sample = map_json_examples(data_ingestor.huggingface_dataset)
-	details=str(data_sample)+'\n```\nMeta Data:\n```\n'+str(meta_data)+'\n```\n'
-	out = data_ingestor.ingest(details=details, llm=llm)
+	data_ingestor.walk_dataset('./downloaded_data/')
+	out = data_ingestor.ingest(llm=llm)
 	print(out)
-	

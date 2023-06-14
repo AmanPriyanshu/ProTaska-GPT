@@ -7,7 +7,7 @@ with open(".secrets", "r") as f:
 
 if __name__ == '__main__':
 	data_ingestor = KaggleDatasetImporter()
-	data_ingestor.import_dataset("rtatman/digidb", './downloaded_data/')
+	data_ingestor.import_dataset("vishalsubbiah/pokemon-images-and-types", './downloaded_data/') #"vishalsubbiah/pokemon-images-and-types"
 	data_ingestor.walk_dataset('./downloaded_data/')
 	out = data_ingestor.ingest(llm=llm)
 	print(out)

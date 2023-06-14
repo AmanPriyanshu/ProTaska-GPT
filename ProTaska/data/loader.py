@@ -36,7 +36,11 @@ class LocalDatasetImporter:
     def walk_dataset(self, directory_path):
         dataset = []
         for root, dirs, files in os.walk(directory_path):
+            dirs = dirs[:5]  # Limit the dirs list to the first 5 elements
+            files = files[:5]  # Limit the files list to the first 5 elements
+            
             for file in files:
+                # Perform actions on the file
                 relative_path = os.path.relpath(os.path.join(root, file), directory_path)
                 absolute_path = os.path.abspath(os.path.join(root, file))
                 memory_size = os.path.getsize(absolute_path) / (1024 * 1024)  # in megabytes
