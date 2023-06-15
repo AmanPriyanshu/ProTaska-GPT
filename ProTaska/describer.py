@@ -1,4 +1,3 @@
-from .visualize import file_loader
 from .data.loader import HuggingFaceDatasetImporter, LocalDatasetImporter, KaggleDatasetImporter
 from langchain.chat_models import ChatOpenAI
 import gradio as gr

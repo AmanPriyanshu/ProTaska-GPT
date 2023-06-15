@@ -65,7 +65,6 @@ class LocalDatasetImporter:
                 out = llm_chain.run(self.prompt_prefix+chunk)
             else:
                 out = llm_chain.run("Previously Summarized:\n"+out+"\n\n"+self.prompt_prefix+chunk)
-        print()
         return out
 
 class KaggleDatasetImporter(LocalDatasetImporter):
