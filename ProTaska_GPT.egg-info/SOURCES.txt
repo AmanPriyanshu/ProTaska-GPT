@@ -1,6 +1,13 @@
 LICENSE
 README.md
 setup.py
+ProTaska/__init__.py
+ProTaska/describer.py
+ProTaska/ideate.py
+ProTaska/data/__init__.py
+ProTaska/data/data_utils.py
+ProTaska/data/ingestion.py
+ProTaska/data/loader.py
 ProTaska_GPT.egg-info/PKG-INFO
 ProTaska_GPT.egg-info/SOURCES.txt
 ProTaska_GPT.egg-info/dependency_links.txt
