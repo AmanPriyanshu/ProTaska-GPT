@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='ProTaska-GPT',
-    version='0.0.2',
+    version='0.0.3',
     description='Unleash the Potential of Datasets with Intelligent Tasks, Tutorials, and Algorithm Recommendations.',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -19,6 +19,7 @@ setup(
         'pandas',
         'colorama',
         'gradio',
+        'openai',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',

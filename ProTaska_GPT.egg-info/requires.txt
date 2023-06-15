@@ -3,3 +3,4 @@ numpy
 pandas
 colorama
 gradio
+openai
