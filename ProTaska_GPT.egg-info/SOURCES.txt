@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+ProTaska_GPT.egg-info/PKG-INFO
+ProTaska_GPT.egg-info/SOURCES.txt
+ProTaska_GPT.egg-info/dependency_links.txt
+ProTaska_GPT.egg-info/requires.txt
+ProTaska_GPT.egg-info/top_level.txt
+protaska/__init__.py
+protaska/describer.py
+protaska/ideate.py
