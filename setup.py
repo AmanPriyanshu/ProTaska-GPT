@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='ProTaska-GPT',
-    version='0.0.0',
+    version='0.0.1',
     description='Unleash the Potential of Datasets with Intelligent Tasks, Tutorials, and Algorithm Recommendations.',
     author='Aman Priyanshu, Supriti Vijay',
     author_email='amanpriyanshusms2001@gmail.com',
@@ -13,6 +13,7 @@ setup(
         'numpy',
         'pandas',
         'colorama',
+        'gradio',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
