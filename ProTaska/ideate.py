@@ -14,7 +14,7 @@ Human: {human_input}
 Assistant:"""
 
 prompt = PromptTemplate(
-    input_variables=["history", "human_input", "dataset_description"], 
+    input_variables=["history", "human_input"], 
     template=template
 )
 
@@ -22,12 +22,12 @@ def main(openai_key, dataset_description):
     chatgpt_chain = LLMChain(
         llm=ChatOpenAI(model_name="gpt-3.5-turbo",openai_api_key=openai_key,temperature=0), 
         prompt=prompt, 
-        verbose=True, 
+        verbose=False, 
         memory=ConversationBufferWindowMemory(k=2),
     )
-    output = chatgpt_chain.predict(human_input="", dataset_description=dataset_description)
+    output = chatgpt_chain.predict(human_input="Data Description:\n"+dataset_description+'\n')
     print("ProTaska: >>", output)
     while True:
         query = input("Human Input:\t")
-        output = chatgpt_chain.predict(human_input=query, dataset_description=dataset_description)
+        output = chatgpt_chain.predict(human_input=query)
         print("ProTaska: >>", output)
