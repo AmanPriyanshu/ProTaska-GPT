@@ -59,7 +59,7 @@ def main(openai_key, dataset_description):
     print("ProTaska-Source:\t", chat_bot.second_output)
     print()
     while True:
-        human_input = input("Human:\t")
+        human_input = input("Human (input 'break' or 'exit' to stop the loop):\t")
         if human_input=='exit' or human_input=='break':
             print("ProTaska:\tStopping Execution!")
             break
