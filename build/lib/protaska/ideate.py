@@ -60,5 +60,8 @@ def main(openai_key, dataset_description):
     print()
     while True:
         human_input = input("Human:\t")
+        if human_input=='exit' or human_input=='break':
+            print("ProTaska:\tStopping Execution!")
+            break
         print("ProTaska:\t", chat_bot(human_input))
         print()
