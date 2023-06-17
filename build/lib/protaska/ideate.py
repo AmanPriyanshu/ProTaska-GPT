@@ -47,7 +47,7 @@ class ChatBotWrapper:
             memory=self.memory,
             verbose=agent_verbose
         )
-        self.second_output = self.agent_chain.run("Find relevant sources from Wikipedia from the above techniques and advances you just said. Also include some TLDRs in front of those links. Be specific to the ML techniques previously mentioned.")
+        self.second_output = self.agent_chain.run(self.first_output+"\n\nFind relevant sources from Wikipedia from the above techniques and advances. Also include some TLDRs in front of those links. Be specific to the ML techniques previously mentioned.")
 
     def __call__(self, human_input):
         output = self.agent_chain.run(human_input)

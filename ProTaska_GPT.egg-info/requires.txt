@@ -4,3 +4,5 @@ pandas
 colorama
 wikipedia
 openai
+datasets
+tiktoken
