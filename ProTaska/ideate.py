@@ -53,8 +53,8 @@ class ChatBotWrapper:
         output = self.agent_chain.run(human_input)
         return output
 
-def main(openai_key, dataset_description):
-    chat_bot = ChatBotWrapper(openai_key, dataset_description)
+def main(openai_key, dataset_description, agent_verbose=False):
+    chat_bot = ChatBotWrapper(openai_key, dataset_description, agent_verbose=agent_verbose)
     print("ProTaska:\t", chat_bot.first_output)
     print("ProTaska-Source:\t", chat_bot.second_output)
     print()
