@@ -18,7 +18,7 @@ setup(
         'numpy',
         'pandas',
         'colorama',
-        'gradio',
+        'wikipedia',
         'openai',
     ],
     classifiers=[
