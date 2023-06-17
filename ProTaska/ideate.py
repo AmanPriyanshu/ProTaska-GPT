@@ -19,7 +19,7 @@ Human: {human_input}
 Assistant:"""
 
 class ChatBotWrapper:
-    def __init__(self, openai_key, dataset_description):
+    def __init__(self, openai_key, dataset_description, agent_verbose=True):
         self.openai_key = openai_key
         self.dataset_description = dataset_description
         self.prompt = PromptTemplate(
@@ -45,7 +45,7 @@ class ChatBotWrapper:
             llm=self.llm, 
             agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION, 
             memory=self.memory,
-            verbose=True
+            verbose=agent_verbose
         )
         self.second_output = self.agent_chain.run("Find relevant sources from Wikipedia from the above techniques and advances you just said. Also include some TLDRs in front of those links. Be specific to the ML techniques previously mentioned.")
 
