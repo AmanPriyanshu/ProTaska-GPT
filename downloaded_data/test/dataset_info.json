@@ -1,0 +1,59 @@
+{
+  "builder_name": "json",
+  "citation": "",
+  "config_name": "mteb--tweet_sentiment_extraction",
+  "dataset_size": 3283942,
+  "description": "",
+  "download_checksums": {
+    "https://huggingface.co/datasets/mteb/tweet_sentiment_extraction/resolve/62146448f05be9e52a36b8ee9936447ea787eede/train.jsonl": {
+      "num_bytes": 3633338,
+      "checksum": null
+    },
+    "https://huggingface.co/datasets/mteb/tweet_sentiment_extraction/resolve/62146448f05be9e52a36b8ee9936447ea787eede/test.jsonl": {
+      "num_bytes": 465111,
+      "checksum": null
+    }
+  },
+  "download_size": 4098449,
+  "features": {
+    "id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "label": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "label_text": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 7382391,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 2911554,
+      "num_examples": 27481,
+      "dataset_name": "json"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 372388,
+      "num_examples": 3534,
+      "dataset_name": "json"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
