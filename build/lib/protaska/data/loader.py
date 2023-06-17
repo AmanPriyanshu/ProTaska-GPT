@@ -53,9 +53,10 @@ class LocalDatasetImporter:
         dataset = self.reformat_dataset(dataset)
         self.dataset = "\n\n".join(dataset)
 
-    def ingest(self, llm, chunk_size=500):
+    def ingest(self, llm, chunk_size=500, verbose=False):
         details = self.dataset
-        print(colorama.Fore.BLUE+"Going to summarize:\n"+colorama.Fore.RESET,colorama.Fore.GREEN+str(details)+colorama.Fore.RESET)
+        if verbose:
+            print(colorama.Fore.BLUE+"Going to summarize:\n"+colorama.Fore.RESET,colorama.Fore.GREEN+str(details)+colorama.Fore.RESET)
         llm_chain = IngestionChain(llm=llm)
         out = None
         while len(details) > 0:
