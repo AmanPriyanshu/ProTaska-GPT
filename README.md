@@ -1,4 +1,4 @@
-# 🚀 ProTaska-GPT
+# 🧑‍🎓 ProTaska-GPT
 
 **Your AI-powered data companion 🤖**
 
@@ -15,11 +15,11 @@ Specify your dataset of choice, and ProTaska-GPT generates a tailored codebase, 
 ## 🔎 Objectives:
 1. **Beginner-Friendly Tutorials**: ProTaska-GPT aims to offer automated generation of a collection of beginner-friendly tutorials that guide users through common data science workflows, step-by-step, fostering practical learning and skill development.
 
-## Installation:
+## 📈 Installation:
 
 `pip install ProTaska-GPT --upgrade`
 
-## 📈 Usage:
+## 🚀 Usage:
 
 Importing base descriptors and ideation bot:
 ```

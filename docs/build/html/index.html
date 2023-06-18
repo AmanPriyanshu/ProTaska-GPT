@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>🚀 ProTaska-GPT &#8212; ProTaska-GPT 0.0.0 documentation</title>
+    <title>🧑‍🎓 ProTaska-GPT &#8212; ProTaska-GPT 0.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -30,7 +30,7 @@
           <div class="body" role="main">
             
   <section id="protaska-gpt">
-<h1>🚀 ProTaska-GPT<a class="headerlink" href="#protaska-gpt" title="Permalink to this heading">¶</a></h1>
+<h1>🧑‍🎓 ProTaska-GPT<a class="headerlink" href="#protaska-gpt" title="Permalink to this heading">¶</a></h1>
 <p><strong>Your AI-powered data companion 🤖</strong></p>
 <p>Specify your dataset of choice, and ProTaska-GPT generates a tailored
 codebase, empowering you to visualize and understand the dataset with
@@ -42,21 +42,53 @@ journey with ease and efficiency!</p>
 <li><p><strong>Dataset Ingestion:</strong> ProTaska-GPT seamlessly integrates with
 dataset sources like Kaggle and Hugging Face (<em>for now</em>), allowing
 users to easily import and work with diverse datasets.</p></li>
-<li><p><strong>Visualize, Inspect, and Understand:</strong> It provides powerful tools to
-visualize and explore datasets, enabling users to gain insights into
-data distributions, correlations, missing values, and other important
-characteristics.</p></li>
 <li><p><strong>Task Recommendations:</strong> Leveraging its GPT-backbone, it generates a
 customized set of tasks tailored to each dataset, providing users
 with valuable project ideas and challenges.</p></li>
 <li><p><strong>Algorithm Suggestions:</strong> Based on the dataset characteristics, it
 suggests suitable machine learning algorithms, enabling users to make
 informed decisions during their project journey.</p></li>
-<li><p><strong>Beginner-Friendly Tutorials</strong>: ProTaska-GPT offers to generate a
-collection of beginner-friendly tutorials that guide users through
-common data science workflows, step-by-step, fostering practical
-learning and skill development.</p></li>
+<li><p><strong>Conversational Chatbot:</strong> Allow user to discuss about different
+techniques and scrape information from Wikipedia to give relevant
+responses.</p></li>
 </ol>
+</section>
+<section id="objectives">
+<h2>🔎 Objectives:<a class="headerlink" href="#objectives" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Beginner-Friendly Tutorials</strong>: ProTaska-GPT aims to offer automated
+generation of a collection of beginner-friendly tutorials that guide
+users through common data science workflows, step-by-step, fostering
+practical learning and skill development.</p></li>
+</ol>
+</section>
+<section id="installation">
+<h2>📈 Installation:<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ProTaska-GPT</span> <span class="pre">--upgrade</span></code></p>
+</section>
+<section id="usage">
+<h2>🚀 Usage:<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<p>Importing base descriptors and ideation bot:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">protaska.describer</span> <span class="kn">import</span> <span class="n">describe_dataset</span>
+<span class="kn">from</span> <span class="nn">protaska.ideate</span> <span class="kn">import</span> <span class="n">main</span> <span class="k">as</span> <span class="n">chatbot</span>
+</pre></div>
+</div>
+<p>Providing meta-data about the dataset to be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openai_key</span> <span class="o">=</span> <span class="s1">&#39;**open-ai-secret-key**&#39;</span>
+<span class="n">importer_type</span> <span class="o">=</span> <span class="s2">&quot;HuggingFaceDatasetImporter&quot;</span>
+<span class="n">dataset_key</span> <span class="o">=</span> <span class="s1">&#39;mteb/tweet_sentiment_extraction&#39;</span>
+<span class="n">destination_path</span> <span class="o">=</span> <span class="s1">&#39;./downloaded_data/&#39;</span>
+</pre></div>
+</div>
+<p>Getting automated data descriptions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">description</span><span class="p">,</span> <span class="n">dataloader_obj</span> <span class="o">=</span> <span class="n">describe_dataset</span><span class="p">(</span><span class="n">openai_key</span><span class="p">,</span> <span class="n">importer_type</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">,</span> <span class="n">dataset_key</span><span class="p">)</span>
+<span class="n">description</span>
+</pre></div>
+</div>
+<p>Running an interactive ChatBot for ideation and base-code building:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chatbot</span><span class="p">(</span><span class="n">openai_key</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">dataloader_obj</span><span class="o">.</span><span class="n">superficial_meta_data</span><span class="p">,</span> <span class="n">agent_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="contributing">
 <h2>💁 Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">¶</a></h2>
