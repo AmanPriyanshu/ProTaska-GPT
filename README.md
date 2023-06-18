@@ -3,20 +3,20 @@
 **Your AI-powered data companion 🤖**
 
 
-Specify your dataset of choice, and ProTaska-GPT will understand the dataset with tasks, tutorials, and actionable insights for it. Accelerate your data science journey with ease and efficiency! (Meant for people starting their journey into Data Science.)
+ProTaska-GPT is an AI-powered tool designed to assist users in their data science journey. It provides a range of features and functionalities to accelerate the process of understanding and working with datasets, making it ideal for beginners in the field of data science.
 
 ## 🖊️ Key Features:
 
-1. **Dataset Ingestion:** ProTaska-GPT seamlessly integrates with dataset sources like Kaggle and Hugging Face (_for now_), allowing users to easily import and work with diverse datasets.
-2. **Task Recommendations:** Leveraging its GPT-backbone, it generates a customized set of tasks tailored to each dataset, providing users with valuable project ideas and challenges.
-3. **Algorithm Suggestions:** Based on the dataset characteristics, it suggests suitable machine learning algorithms, enabling users to make informed decisions during their project journey.
-4. **Conversational Chatbot:** Allow user to discuss about different techniques and scrape information from Wikipedia to give relevant responses.
+1. **Dataset Ingestion:** ProTaska-GPT seamlessly integrates with dataset sources like Kaggle and Hugging Face, allowing users to easily import and work with diverse datasets.
+2. **Task Recommendations:** Leveraging its GPT backbone, ProTaska-GPT generates a customized set of tasks tailored to each dataset. These recommendations provide users with valuable project ideas and challenges to explore.
+3. **Algorithm Suggestions:** Leveraging its GPT backbone, ProTaska-GPT generates a customized set of tasks tailored to each dataset. These recommendations provide users with valuable project ideas and challenges to explore.
+4. **Conversational Chatbot:** ProTaska-GPT includes a conversational chatbot that allows users to discuss different techniques and scrape information from Wikipedia to provide relevant responses.
 
 ## 🔎 Objectives:
-1. **Beginner-Friendly Tutorials**: ProTaska-GPT aims to offer automated generation of a collection of beginner-friendly tutorials that guide users through common data science workflows, step-by-step, fostering practical learning and skill development.
+1. **Beginner-Friendly Tutorials**: ProTaska-GPT aims to automate the generation of a collection of beginner-friendly tutorials. These tutorials guide users through common data science workflows, step-by-step, fostering practical learning and skill development.
 
 ## 👨‍🏫 Tutorials:
-We have a multitude of tutorials to help get you started on using our AI-powered data companion.
+We provide a variety of tutorials to help you get started with our AI-powered data companion.
 1. [Tweet Sentiment Analysis](/Tutorials/Tweet_Sentiment_Analysis_Example.ipynb)
 2. [Image Classification](/Tutorials/Image_Classification_Example.ipynb)
 3. [Housing Data](/Tutorials/Housing_data_Example.ipynb)
@@ -55,4 +55,4 @@ chatbot(openai_key, description, dataloader_obj.superficial_meta_data, agent_ver
 
 ## 💁 Contributing
 
-This is an open-source project and we would be really grateful to any contributions.
+ProTaska-GPT is an open-source project, and we welcome contributions from the community. We appreciate any contributions that can help improve and enhance the tool.
