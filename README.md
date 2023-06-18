@@ -3,7 +3,7 @@
 **Your AI-powered data companion 🤖**
 
 
-Specify your dataset of choice, and ProTaska-GPT generates a tailored codebase, empowering you to visualize and understand the dataset with tasks, tutorials, and actionable insights. Accelerate your data science journey with ease and efficiency!
+Specify your dataset of choice, and ProTaska-GPT will understand the dataset with tasks, tutorials, and actionable insights for it. Accelerate your data science journey with ease and efficiency! It is meant for people starting their journey into Data Science
 
 ## 🖊️ Key Features:
 
