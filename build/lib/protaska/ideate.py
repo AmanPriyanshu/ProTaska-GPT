@@ -7,7 +7,7 @@ from langchain.utilities import WikipediaAPIWrapper
 from langchain.tools import Tool
 
 wikipedia = WikipediaAPIWrapper()
-wikipedia.doc_content_chars_max = 3000
+wikipedia.doc_content_chars_max = 1000
 
 template = """ProTaska is a Data Science and Machine Learning expert.
 
@@ -15,9 +15,11 @@ As ProTaska your job is to read the description of a dataset and explore opportu
 
 If the user asks questions you must follow it with responses related to their input query. Remember to be simple and eli5 in your nature of responses.
 
+Try not to use any actions or tools unless its Wikipedia. These are costly actions and shouldn't be taken.
+
 {human_input}
 
-Understand when developing code to focus on the codes which are friendly to the original source HuggingFace/Kaggle. Insure that you mention pip install for the different libraries.
+Understand when writing scripts/code to focus on the codes which are friendly to the original source, i.e. HuggingFace/Kaggle. Ensure that you mention pip install for the different libraries.
 Assistant:"""
 
 class ChatBotWrapper:
@@ -50,7 +52,7 @@ class ChatBotWrapper:
             memory=self.memory,
             verbose=agent_verbose
         )
-        self.second_output = self.agent_chain.run(self.first_output+"\n\nFind relevant sources from Wikipedia from the above techniques and advances. Also include some TLDRs in front of those links. Be specific to the ML techniques previously mentioned.")
+        self.second_output = "Connected to Wikipedia for external information!"#self.agent_chain.run(self.first_output+"\n\nFind relevant sources from Wikipedia from the above techniques and advances. Also include some TLDRs in front of those links. Be specific to the ML techniques previously mentioned.")
 
     def __call__(self, human_input):
         human_input = "Meta-Data of Dataset: "+str(self.superficial_meta_data)+'\n'+"Dataset: "+self.dataset_description+'\n\nHuman Input: '+human_input

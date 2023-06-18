@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ProTaska-GPT
-Version: 0.0.10
+Version: 0.0.11
 Summary: Unleash the Potential of Datasets with Intelligent Tasks, Tutorials, and Algorithm Recommendations.
 Home-page: https://github.com/AmanPriyanshu/protaska-gpt
 Author: Aman Priyanshu, Supriti Vijay
@@ -31,6 +31,37 @@ Specify your dataset of choice, and ProTaska-GPT generates a tailored codebase, 
 
 ## 🔎 Objectives:
 1. **Beginner-Friendly Tutorials**: ProTaska-GPT aims to offer automated generation of a collection of beginner-friendly tutorials that guide users through common data science workflows, step-by-step, fostering practical learning and skill development.
+
+## Installation:
+
+`pip install ProTaska-GPT --upgrade`
+
+## 📈 Usage:
+
+Importing base descriptors and ideation bot:
+```
+from protaska.describer import describe_dataset
+from protaska.ideate import main as chatbot
+```
+
+Providing meta-data about the dataset to be used:
+```
+openai_key = '**open-ai-secret-key**'
+importer_type = "HuggingFaceDatasetImporter"
+dataset_key = 'mteb/tweet_sentiment_extraction'
+destination_path = './downloaded_data/'
+```
+
+Getting automated data descriptions:
+```
+description, dataloader_obj = describe_dataset(openai_key, importer_type, destination_path, dataset_key)
+description
+```
+
+Running an interactive ChatBot for ideation and base-code building:
+```
+chatbot(openai_key, description, dataloader_obj.superficial_meta_data, agent_verbose=False)
+```
 
 ## 💁 Contributing
 
