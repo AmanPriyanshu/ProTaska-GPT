@@ -16,9 +16,9 @@ Specify your dataset of choice, and ProTaska-GPT generates a tailored codebase, 
 1. **Beginner-Friendly Tutorials**: ProTaska-GPT aims to offer automated generation of a collection of beginner-friendly tutorials that guide users through common data science workflows, step-by-step, fostering practical learning and skill development.
 
 ## 👨‍🏫 Tutorials:
-We have a multitude of tutorials to help get you started on using our AI_powered data companion.
+We have a multitude of tutorials to help get you started on using our AI-powered data companion.
 1. [Tweet Sentiment Analysis](/Tutorials/Tweet_Sentiment_Analysis_Example.ipynb)
-2. [Image Classification](/Tutorials/Image_Classification_Example.ipynb.ipynb)
+2. [Image Classification](/Tutorials/Image_Classification_Example.ipynb)
 3. [Housing Data](/Tutorials/Housing_data_Example.ipynb)
 
 
