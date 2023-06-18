@@ -15,12 +15,15 @@ As ProTaska your job is to read the description of a dataset and explore opportu
 
 If the user asks questions you must follow it with responses related to their input query. Remember to be simple and eli5 in your nature of responses.
 
-Human: {human_input}
+{human_input}
+
+Understand when developing code to focus on the codes which are friendly to the original source HuggingFace/Kaggle. Insure that you mention pip install for the different libraries.
 Assistant:"""
 
 class ChatBotWrapper:
-    def __init__(self, openai_key, dataset_description, agent_verbose=True):
+    def __init__(self, openai_key, dataset_description, superficial_meta_data, agent_verbose=True):
         self.openai_key = openai_key
+        self.superficial_meta_data = superficial_meta_data
         self.dataset_description = dataset_description
         self.prompt = PromptTemplate(
             input_variables=["human_input"], 
@@ -50,11 +53,12 @@ class ChatBotWrapper:
         self.second_output = self.agent_chain.run(self.first_output+"\n\nFind relevant sources from Wikipedia from the above techniques and advances. Also include some TLDRs in front of those links. Be specific to the ML techniques previously mentioned.")
 
     def __call__(self, human_input):
+        human_input = "Meta-Data of Dataset: "+str(self.superficial_meta_data)+'\n'+"Dataset: "+self.dataset_description+'\n\nHuman Input: '+human_input
         output = self.agent_chain.run(human_input)
         return output
 
-def main(openai_key, dataset_description, agent_verbose=False):
-    chat_bot = ChatBotWrapper(openai_key, dataset_description, agent_verbose=agent_verbose)
+def main(openai_key, dataset_description, superficial_meta_data, agent_verbose=False):
+    chat_bot = ChatBotWrapper(openai_key, dataset_description, superficial_meta_data, agent_verbose=agent_verbose)
     print("ProTaska:\t", chat_bot.first_output)
     print("ProTaska-Source:\t", chat_bot.second_output)
     print()

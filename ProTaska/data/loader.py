@@ -13,6 +13,7 @@ colorama.init()
 class LocalDatasetImporter:
     def __init__(self):
         self.prompt_prefix = "Data Importer: Local\n\n"
+        self.superficial_meta_data = {}
 
     def get_meta_data(self, dataset):
         for i in range(len(dataset)):
@@ -34,6 +35,7 @@ class LocalDatasetImporter:
         return string_dataset
             
     def walk_dataset(self, directory_path):
+        self.superficial_meta_data.update({"directory_path": directory_path, "storage": "Local"})
         dataset = []
         for root, dirs, files in os.walk(directory_path):
             dirs = dirs[:5]  # Limit the dirs list to the first 5 elements
@@ -79,6 +81,7 @@ class KaggleDatasetImporter(LocalDatasetImporter):
             raise Exception(e)
     
     def import_dataset(self, dataset_name, destination_path):
+        self.superficial_meta_data.update({"destination_path": destination_path, "dataset_name": dataset_name, "main_class": "Kaggle"})
         # Create a directory to store the dataset
         os.makedirs(destination_path, exist_ok=True)
         # Adding the data-source to the ingestion prompt
@@ -98,6 +101,7 @@ class HuggingFaceDatasetImporter(LocalDatasetImporter):
             raise Exception(e)
     
     def import_dataset(self, dataset_name, destination_path):
+        self.superficial_meta_data.update({"destination_path": destination_path, "dataset_name": dataset_name, "main_class": "HuggingFace"})
         # Load the dataset using the Hugging Face datasets library
         dataset = self.load_dataset(dataset_name)
         # Adding the data-source to the ingestion prompt

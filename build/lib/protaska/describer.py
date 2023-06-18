@@ -10,18 +10,18 @@ def describe_dataset(openai_key, importer_type, destination_path, dataset_key=No
         data_ingestor.import_dataset(dataset_key, destination_path)
         data_ingestor.walk_dataset(destination_path)
         out = data_ingestor.ingest(llm=llm)
-        return f"Description: {out}"
+        return f"Description: {out}", data_ingestor
     elif importer_type == "KaggleDatasetImporter":
         data_ingestor = KaggleDatasetImporter()
         data_ingestor.import_dataset(dataset_key, destination_path)
         data_ingestor.walk_dataset(destination_path)
         out = data_ingestor.ingest(llm=llm)
-        return f"Description: {out}"
+        return f"Description: {out}", data_ingestor
     elif importer_type == "LocalDatasetImporter":
         data_ingestor = LocalDatasetImporter()
         data_ingestor.walk_dataset(destination_path)
         out = data_ingestor.ingest(llm=llm)
-        return f"Description: {out}"
+        return f"Description: {out}", data_ingestor
     else:
         return "Invalid selection"
 
