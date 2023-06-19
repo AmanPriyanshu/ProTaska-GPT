@@ -10,7 +10,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author='Aman Priyanshu, Supriti Vijay',
-    author_email='amanpriyanshusms2001@gmail.com',
+    author_email='amanpriyanshusms2001@gmail.com, supriti.vijay@gmail.com',
     packages=find_packages(exclude=["notebooks", "docs"]),
     url='https://github.com/AmanPriyanshu/protaska-gpt',
     install_requires=[
