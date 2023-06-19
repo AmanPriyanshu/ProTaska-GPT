@@ -5,6 +5,10 @@
 
 Specify your dataset of choice, and ProTaska-GPT will understand the dataset with tasks, tutorials, and actionable insights for it. Accelerate your data science journey with ease and efficiency! (Meant for people starting their journey into Data Science.)
 
+## 💁 Contributing
+
+This is an open-source project and we would be really grateful to any contributions.
+
 ## 🖊️ Key Features:
 
 1. **Dataset Ingestion:** ProTaska-GPT seamlessly integrates with dataset sources like Kaggle and Hugging Face (_for now_), allowing users to easily import and work with diverse datasets.
@@ -52,7 +56,3 @@ Running an interactive ChatBot for ideation and base-code building:
 ```
 chatbot(openai_key, description, dataloader_obj.superficial_meta_data, agent_verbose=False)
 ```
-
-## 💁 Contributing
-
-This is an open-source project and we would be really grateful to any contributions.
