@@ -1,13 +1,12 @@
-from langchain import ConversationChain, LLMChain, PromptTemplate
-from langchain.memory import ConversationSummaryBufferMemory 
+import logging
 from langchain.chat_models import ChatOpenAI
-from langchain.agents import AgentType
-from langchain.agents import initialize_agent
-from langchain.utilities import WikipediaAPIWrapper
+from langchain.agents import AgentType, initialize_agent
+from langchain.memory import ConversationSummaryBufferMemory
 from langchain.tools import Tool
+from langchain.utilities import WikipediaAPIWrapper
 
-wikipedia = WikipediaAPIWrapper()
-wikipedia.doc_content_chars_max = 1000
+wikipedia_api = WikipediaAPIWrapper()
+wikipedia_api.doc_content_chars_max = 1000
 
 template = """ProTaska is a Data Science and Machine Learning expert.
 
@@ -22,7 +21,7 @@ Try not to use any actions or tools unless its Wikipedia. These are costly actio
 Understand when writing scripts/code to focus on the codes which are friendly to the original source, i.e. HuggingFace/Kaggle. Ensure that you mention pip install for the different libraries.
 Assistant:"""
 
-class ChatBotWrapper:
+class ChatBot:
     def __init__(self, openai_key, dataset_description, superficial_meta_data, agent_verbose=True):
         self.openai_key = openai_key
         self.superficial_meta_data = superficial_meta_data
@@ -31,43 +30,47 @@ class ChatBotWrapper:
             input_variables=["human_input"], 
             template=template
         )
-        self.llm = ChatOpenAI(model_name="gpt-3.5-turbo",openai_api_key=self.openai_key,temperature=0)
+        self.llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=self.openai_key, temperature=0)
         self.chatgpt_chain = LLMChain(
             llm=self.llm,
             prompt=self.prompt, 
             verbose=False, 
         )
-        self.first_output = self.chatgpt_chain.predict(human_input="Data Description:\n"+self.dataset_description+'\n')
-        input_string = template.format(human_input="Data Description:\n"+self.dataset_description+'\n')
+        self.first_output = self.chatgpt_chain.predict(human_input="Data Description:\n" + self.dataset_description + '\n')
+        input_string = template.format(human_input="Data Description:\n" + self.dataset_description + '\n')
         self.memory = ConversationSummaryBufferMemory(llm=self.llm, max_token_limit=200)
         self.memory.save_context({"input": input_string}, {"output": self.first_output})
         tools = Tool.from_function(
-            func=wikipedia.run,
+            func=wikipedia_api.run,
             name="Wikipedia",
             description="useful for when you need information and sources from Wikipedia!"
-        ),
-        self.agent_chain = initialize_agent(tools=tools, 
+        )
+        self.agent_chain = initialize_agent(
+            tools=tools, 
             llm=self.llm, 
             agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION, 
             memory=self.memory,
             verbose=agent_verbose
         )
-        self.second_output = "Connected to Wikipedia for external information!"#self.agent_chain.run(self.first_output+"\n\nFind relevant sources from Wikipedia from the above techniques and advances. Also include some TLDRs in front of those links. Be specific to the ML techniques previously mentioned.")
+        self.second_output = "Connected to Wikipedia for external information!"
 
     def __call__(self, human_input):
-        human_input = "Meta-Data of Dataset: "+str(self.superficial_meta_data)+'\n'+"Dataset: "+self.dataset_description+'\n\nHuman Input: '+human_input
+        human_input = "Meta-Data of Dataset: " + str(self.superficial_meta_data) + '\n' + "Dataset: " + self.dataset_description + '\n\nHuman Input: ' + human_input
         output = self.agent_chain.run(human_input)
         return output
 
-def main(openai_key, dataset_description, superficial_meta_data, agent_verbose=False):
-    chat_bot = ChatBotWrapper(openai_key, dataset_description, superficial_meta_data, agent_verbose=agent_verbose)
-    print("ProTaska:\t", chat_bot.first_output)
-    print("ProTaska-Source:\t", chat_bot.second_output)
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)  # Set the desired log level
+    openai_key = "<your_openai_key>"
+    dataset_description = "<dataset_description>"
+    superficial_meta_data = "<superficial_meta_data>"
+    chat_bot = ChatBot(openai_key, dataset_description, superficial_meta_data, agent_verbose=False)
+    logging.info("ProTaska:\t" + chat_bot.first_output)
+    logging.info("ProTaska-Source:\t" + chat_bot.second_output)
     print()
     while True:
         human_input = input("Human (input 'break' or 'exit' to stop the loop):\t")
-        if human_input=='exit' or human_input=='break':
-            print("ProTaska:\tStopping Execution!")
+        if human_input == 'exit' or human_input == 'break':
+            logging.info("ProTaska:\tStopping Execution!")
             break
-        print("ProTaska:\t", chat_bot(human_input))
-        print()
+        logging.info("ProTaska:\t" + chat_bot(human_input))
